@@ -1,0 +1,68 @@
+<div class="container">
+    <table class='table' border="1">
+        <caption>商品别名表视图(goods alias list view)</caption>
+        <tr>
+            <th>别名ID</th>
+            <th>类别ID</th>
+            <th>类别名称</th>
+            <th>商品别名</th>
+            <th>描述信息</th>
+            <th>优先等级</th>
+            <th>类别等级</th>
+            <th>配置状态</th>
+        </tr>
+        
+
+        <% _.each(goodsaliaslist, function(item) { %>
+        <tr data-id="<%= item.aliasid %>" data-model="item">
+        
+            <td><%= item.aliasid %></td>
+            <td><%= item.categoryid %></td>
+            <td><%= item.categoryname %></td>
+            <td><%= item.aliasname %></td>
+            <td><%= item.description %></td>
+            <td><%= item.aliasorder %></td>
+            <td><%= item.categoryorder %></td>
+            <td><%= item.status %></td>
+        </tr> 
+
+        <% }) %>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <form action="addGoodsAlias" enctype="multipart/form-data" method="post">
+        <label>
+            别名ID：<input type="text" name="aliasid" placeholder="别名ID" autocomplete="off"><br>
+        </label>
+
+        <label>
+            类别ID：<input type="text" name="categoryid" placeholder="类别ID" autocomplete="off"><br>
+        </label>
+        
+        <label>
+            商品别名：<input type="text" name="aliasname" placeholder="商品别名" autocomplete="off"> <br>
+        </label>
+
+        <label>
+            描述信息：<input type="text" name="description" placeholder="描述信息" autocomplete="off"><br>
+        </label>
+
+        <label>
+            优先等级：<input type="text" name="aliasorder" placeholder="优先等级" autocomplete="off"><br>
+        </label>
+
+        <label>
+            类别等级：<input type="text" name="categoryorder" placeholder="类别等级" autocomplete="off"><br>
+        </label>
+
+        <label>
+            配置状态：<input type="boolean" name="status" placeholder="配置状态" autocomplete="off"><br>
+        </label>
+        <input type="submit" value="提交别名表"><br>
+    </form>
+
+</div>

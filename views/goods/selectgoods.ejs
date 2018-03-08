@@ -1,0 +1,72 @@
+<div class="container">
+    <table class='table' border="1">
+        <caption>商品类别表视图(goods cateory list view)</caption>
+        <tr>
+            <th>类别ID</th>
+            <th>父类ID</th>
+            <th>类别名称</th>
+            <th>描述信息</th>
+            <th>类别排序</th>
+            <th>配置状态</th>
+            <th>是否渠道</th>
+        </tr>
+        
+        <% _.each(goodscategorylist, function(item) { %>
+        <tr data-id="<%= item.aliasid %>" data-model="item">
+            <td><%= item.id %></td>
+            <td><%= item.parentid %></td>
+            <td><%= item.categoryname %></td>
+            <td><%= item.description %></td>
+            <td><%= item.sortorder %></td>
+            <td><%= item.status %></td>
+            <td><%= item.ischannel %></td>
+        </tr> 
+
+        <% }) %>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <select name="商品类别">
+        <option selected>全部类型</option>
+        <% _.each(goodscategorylist, function(item) { %>
+            <tr data-id="<%= item.categoryid %>" data-model="item">
+                <option><%= item.categoryname %></option>
+            </tr> 
+        <% }) %>
+    </select>
+    <table class='table' border="1">
+        <tr>
+            <td>
+                <form action="addGoodsCateory" enctype="multipart/form-data" method="post">
+                    <label>
+                        父类ID：<input type="text" name="parentid" placeholder="父类ID" ><br>
+                    </label>
+
+                    <label>
+                        类别名称：<input type="text" name="categoryname" placeholder="类别命名" ><br>
+                    </label>
+                    
+                    <label>
+                        类别描述：<input type="text" name="description" placeholder="类别描述" > <br>
+                    </label>
+
+                    <label>
+                        类别排序：<input type="text" name="sortorder" placeholder="类别排序" ><br>
+                    </label>
+
+                    <label>
+                        配置状态：<input type="boolean" name="status" placeholder="配置状态" ><br>
+                    </label>
+
+                    <label>
+                        是否渠道：<input type="boolean" name="ischannel" placeholder="是否渠道" ><br>
+                    </label>
+                    <input type="submit" value="提交类别表"><br>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>

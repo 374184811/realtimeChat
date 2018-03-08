@@ -1,0 +1,53 @@
+<div class="container">
+    <table class='table' border="1">
+        <caption>商品规格表视图(goods specifications list view)</caption>
+
+        <th rowspan="<%= specifications.length + 2 %>">规格选择</th>
+        <tr>
+            <th>规格ID</th>
+            <th>规格名字</th>
+            <th>标签类型</th>
+            <th>描述信息</th>
+            <th>标签名字</th>
+            <th>规格序号</th>
+            <th>是否开启</th>
+            <th>规格状态</th>
+        </tr>
+        <% _.each(specifications, function(item) { %>
+
+        <tr data-id="<%= item.id %>" data-model="item">
+            <td><%= item.id %></td>
+            <td><%= item.name %></td>
+            <td><%= item.valueoftype %></td>
+            <td><%= item.description %></td>
+            <td><%= item.aliasname %></td>
+            <td><%= item.sortorder %></td>
+            <td><%= item.isenable %></td>
+            <td><%= item.status %></td>
+        </tr> 
+
+        <% }) %>
+
+        <th rowspan="<%= selectinfo.length + 2 %>">属性选择</th>
+        <tr>
+            <th>属性ID</th>
+            <th>规格ID</th>
+            <th>属性数值</th>
+            <th>对应图片</th>
+            <th>优先排序</th>
+            <th>当前状态</th>
+        </tr>
+
+        <% _.each(selectinfo, function(item) { %>
+        <tr data-id="<%= item.id %>" data-model="item">
+            <td><%= item.id %></td>
+            <td><%= item.propertyid %></td>
+            <td><%= item.propertyvalue %></td>
+            <td><%= item.propertyimage %></td>
+            <td><%= item.sortsorder %></td>
+            <td><%= item.status %></td>
+        </tr> 
+
+        <% }) %>
+    </table>
+</div>

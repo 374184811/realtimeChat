@@ -1,0 +1,59 @@
+<div class="container">
+    <table class='table' border="1">
+        <caption>商铺商品列表视图(goods list view)</caption>
+        <tr>
+            <th>商品id</th>
+            <th>商品分类</th>
+            <th>品牌 ID</th>
+            <th>用户 ID</th>
+            <th>店铺 ID</th>
+            <th>商品名称</th>
+            <th>商品货号</th>
+            <th>默认图片</th>
+            <th>属性关联</th>
+            <th>商品图片</th>
+            <th>库存</th>
+            <th>商品价格</th>
+            <th>商品点卷价格</th>
+            <th>商品活动价格</th>
+            <th>重量</th>
+            <th>详细信息</th>
+            <th>商品信息</th>
+            <th>购物车</th>
+        </tr>
+        
+
+        <% _.each(goods, function(item) { %>
+        <tr data-id="<%= item.id %>" data-model="item">
+        
+            <td><%= item.goodsid %></td>
+            <td><%= item.storecategoryid %></td>
+            <td><%= item.brandid %></td>
+            <td><%= item.userid %></td>
+            <td><%= item.storeid %></td>
+            <td><%= item.name %></td>
+            <td><%= item.sku %></td>
+            <td><%= item.imagedefault %></td>
+            <td><%= item.propertyrelated %></td>
+            <td>
+                <img src=<%= 'http://192.168.0.81' + item.attachment %> >
+            </td>
+            <td><%= item.stock %></td>
+            <td><%= item.price %></td>
+            <td><%= item.pricepoint %></td>
+            <td><%= item.pricepromotion %></td>
+            <td><%= item.weight %></td>
+            
+            <td><a href="/goods/show/<%= item.goodsid %>" class="btn btn-sm btn-primary">商品详细信息</a></td>
+            <td><a href="/goods/edit/<%= item.goodsid %>" class="btn btn-sm btn-warning">编辑商品信息</a></td>
+
+            <td><form action="/goods/addcart/<%= item.goodsid %>" method="POST">
+               <!--  <input type="hidden" name="goodsSize" value="delete"/>
+                <input type="hidden" name="_csrf" value="<%= _csrf %>" />  -->
+                <input type="submit" class="btn btn-sm btn-danger" value="添加到购物车"/>
+            </form></td>
+        </tr> 
+
+        <% }) %>
+    </table>
+</div>

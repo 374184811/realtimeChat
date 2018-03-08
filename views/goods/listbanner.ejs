@@ -1,0 +1,38 @@
+<div class="container">
+    <table class='table' border="1">
+        <caption>banner list view</caption>
+        <tr>
+            <th>banner序号</th>
+            <th>baner编号</th>
+            <th>banner标题</th>
+            <th>banner副标题</th>
+            <th>banner类型</th>
+            <th>描述</th>
+            <th>banner pic</th>
+            <th>banner url</th>
+            <th>link type</th>
+            <th>status</th>
+        </tr>
+        <% _.each(banners, function(item) { %>
+        <tr data-id="<%= item.id %>" data-model="item">
+        
+            <td><%= item.order %></td>
+            <td><%= item.bannerserial %></td>
+            <td><%= item.bannername %></td>
+            <td><%= item.bannersubname %></td>
+            <td><%= item.bannertype %></td>
+            <td><%= item.description %></td>
+            <td>
+                <img src=<%= 'http://192.168.0.81' + item.bannerpic %> >
+            </td>
+            <td><%= item.bannerurl %></td>
+            <td><%= item.linktype %></td>
+            
+            <td><%= item.status %></td>
+            
+            <td><a href="/banner/show/<%= item.id %>" class="btn btn-sm btn-primary">banner详细信息</a></td>
+            <td><a href="/banner/edit/<%= item.id %>" class="btn btn-sm btn-warning">编辑banner</a></td>
+        </tr> 
+        <% }) %>
+    </table>
+</div>

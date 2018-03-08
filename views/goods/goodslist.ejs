@@ -1,0 +1,128 @@
+<html>
+
+<body>
+<div class="container">
+    <table class='table' border="1">
+        <caption>商品类别表视图(goods cateory list view)</caption>
+        <tr>
+            <th>类别ID</th>
+            <th>父类ID</th>
+            <th>类别名称</th>
+            <th>描述信息</th>
+            <th>类别排序</th>
+            <th>配置状态</th>
+            <th>是否渠道</th>
+        </tr>
+        
+        <% _.each(goodscategorylist, function(item) { %>
+        <tr data-id="<%= item.id %>" data-model="item">
+            <td><%= item.id %></td>
+            <td><%= item.parentid %></td>
+            <td><%= item.categoryname %></td>
+            <td><%= item.description %></td>
+            <td><%= item.sortorder %></td>
+            <td><%= item.status %></td>
+            <td><%= item.ischannel %></td>
+        </tr> 
+
+        <% }) %>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <select id='parent' onchange='clickOpt()'>
+        <option selected>全部类型</option>
+        <% _.each(goodscategorylist, function(item) { %>
+            <tr data-id="<%= item.id %>" data-model="item">
+                <option value = "<%= item.id %>"> <%= item.categoryname %></option>
+            </tr> 
+        <% }) %>
+    </select>
+    <select id='child'>全部类型</select>
+    <table class='table' border="1">
+        <tr>
+            <td>
+                <form action="addGoodsCateory" enctype="multipart/form-data" method="post">
+                    <label>
+                        父类ID：<input type="text" name="parentid" placeholder="父类ID" autocomplete="off"><br>
+                    </label>
+
+                    <label>
+                        类别名称：<input type="text" name="categoryname" placeholder="类别命名" autocomplete="off"><br>
+                    </label>
+                    
+                    <label>
+                        类别描述：<input type="text" name="description" placeholder="类别描述" autocomplete="off"> <br>
+                    </label>
+
+                    <label>
+                        类别排序：<input type="text" name="sortorder" placeholder="类别排序" autocomplete="off"><br>
+                    </label>
+
+                    <label>
+                        配置状态：<input type="boolean" name="status" placeholder="配置状态" autocomplete="off"><br>
+                    </label>
+
+                    <label>
+                        是否渠道：<input type="boolean" name="ischannel" placeholder="是否渠道" autocomplete="off"><br>
+                    </label>
+                    <input type="submit" value="提交类别表"><br>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+
+<script type="text/javascript">
+
+var child = document.getElementById('child')
+var c_length = child.options.length;
+if(c_length > 0){
+    for (var i = 0; i<c_length; i++) {
+        child.options.remove(0)
+    };
+}
+
+function addOption(val ,text){
+    var opt = document.createElement('option');
+    opt.text = text
+    opt.value = val
+    child.options.add(opt)
+}
+
+function clickOpt(){
+    
+
+    var parent = document.getElementById('parent');
+    var p_value = parent.value;
+
+    var child = document.getElementById('child')
+    var c_length = child.options.length;
+    
+    if(c_length > 0){
+        for (var i = 0; i<c_length; i++) {
+            child.options.remove(0)
+        };
+    }
+
+    if(p_value == '1'){
+        for ($i = 4; $i<=6; $i++) {
+            addOption($i,$i*$i)
+        };
+    }else if(p_value == '2'){
+        for ($i = 7; $i<=9; $i++) {
+            addOption($i,$i*$i)
+        };
+    }else if(p_value == '3'){
+        for ($i = 10; $i<=13; $i++) {
+            addOption($i,$i*$i)
+        };
+    }
+}
+</script>
+</html>
+
+

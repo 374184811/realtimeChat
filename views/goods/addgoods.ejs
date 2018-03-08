@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.7.1.js"></script>
+  </head>
+
+  <body>
+    <form action="goodsParameter" enctype="multipart/form-data" method="post">
+        <label>
+            类别ID：<input type="text" name="storecategoryid" placeholder="分类ID" ><br>
+        </label>
+
+        <label>
+            品牌ID：<input type="text" name="brandid" placeholder="品牌ID" ><br>
+        </label>
+
+         <label>
+            父类ID：<input type="text" name="parentid" placeholder="父类ID" ><br>
+        </label>
+        
+        <label>
+            用户ID：<input type="text" name="userid" placeholder="用户ID" > <br>
+        </label>
+
+        <label>
+            店铺ID：<input type="text" name="storeid" placeholder="店铺ID" ><br>
+        </label>
+
+        <label>
+            商品名称：<input type="text" name="name" placeholder="商品名称" ><br>
+        </label>
+
+         <label>
+            商品系列：<input type="text" name="goodsseries" placeholder="默认显示0" ><br>
+        </label>
+
+        <label>
+            商品货号：<input type="text" name="sku" placeholder="商品货号" ><br>
+        </label>
+
+        <label>
+            商品封面：<input type="text" name="imagedefault" placeholder="默认图片，即封面" ><br>
+        </label>
+
+        <label>
+            属性信息：<input type="text" name="propertyrelated" placeholder="属性关联组合" ><br>
+        </label>
+
+        <label>
+            商品图片ID：<input type="text" name="attachment" placeholder="商品图片ID" ><br>
+        </label>
+
+        <label>
+            商品库存：<input type="text" name="stock" placeholder="库存" ><br>
+        </label>
+
+        <label>
+            商品重量：<input type="text" name="weight" placeholder="商品重量" ><br>
+        </label>
+
+        <label>
+            商品价格：<input type="text" name="price" placeholder="商品价格" ><br>
+        </label>
+
+        <label>
+            点卷价格：<input type="text" name="pricepoint" placeholder="点卷价格" ><br>
+        </label>
+
+        <label>
+            活动价格：<input type="text" name="pricepromotion" placeholder="活动价格" ><br>
+        </label>
+
+        <label>
+            详情数据：<input type="text" name="detailbody" placeholder="详情数据" ><br>
+        </label>
+
+        <label>
+            页面关键词：<input type="text" name="keywords" placeholder="页面关键词" ><br>
+        </label>
+
+        <label>
+            属性关联值：<input type="text" name="propertyvaluelist" placeholder="" ><br>
+        </label>
+
+        <label>
+            预留1：<input type="text" name="reserve1" placeholder="预留1" ><br>
+        </label>
+
+        <label>
+            预留2：<input type="text" name="reserve2" placeholder="预留2" ><br>
+        </label>
+
+        <label>
+            预留3：<input type="text" name="reserve3" placeholder="预留3" ><br>
+        </label>
+
+        <label>
+            预留4：<input type="text" name="reserve4" placeholder="预留4" ><br>
+        </label>
+
+        <label>
+            预留5：<input type="text" name="reserve5" placeholder="预留5" ><br>
+        </label>
+
+        <label>
+            预留6：<input type="text" name="reserve6" placeholder="预留6" ><br>
+        </label>
+
+        <label>
+            预留7：<input type="text" name="reserve7" placeholder="预留7" ><br>
+        </label>
+
+        <label>
+            预留8：<input type="text" name="reserve8" placeholder="预留8" ><br>
+        </label>
+
+        <label>
+            预留9：<input type="text" name="reserve9" placeholder="预留9" ><br>
+        </label>
+
+        <label>
+            预留10：<input type="text" name="reserve10" placeholder="预留10" ><br>
+        </label>
+     
+
+        <label>
+            上传图片：<input type="file" name="pic1" id='pic1' accept="image/png, image/jpeg" ><br>
+        </label>
+
+        <input type="submit" value="提交商品"><br>
+
+    </form>
+
+  </body>
+  <script type='text/javascript'>
+    $(function(){
+    var _URL = window.URL || window.webkitURL;
+    $("#pic1").change(function(e) {
+        var file, img;
+        if ((file = this.files[0])) {
+            img = new Image();
+            img.onload = function() {
+                alert(this.width + " " + this.height);
+            };
+            img.onerror = function() {
+                alert( "not a valid file: " + file.type);
+            };
+            img.src = _URL.createObjectURL(file);
+        }
+    });
+    });
+
+    </script>
+</html>
